@@ -8,8 +8,8 @@ public class Respuesta {
 
     public Respuesta(Integer cod, String body) {
 
-
-
+        this.codigo = cod;
+        this.body = body;
 
 
     }
