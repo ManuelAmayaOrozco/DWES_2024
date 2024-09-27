@@ -1,12 +1,12 @@
-package Tema2.Ejercicio1.Clases;
+package Tema2.Ejercicio2.Clases;
 
 import java.util.Objects;
 
-public class Persona {
+public class User {
     private String nombre;
     private String contrasenia;
 
-    public Persona(String nombre, String contrasenia) {
+    public User(String nombre, String contrasenia) {
 
         this.nombre = nombre;
         this.contrasenia = contrasenia;
@@ -33,7 +33,7 @@ public class Persona {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Persona user = (Persona) o;
+        User user = (User) o;
         return Objects.equals(nombre, user.nombre) && Objects.equals(contrasenia, user.contrasenia);
     }
 
