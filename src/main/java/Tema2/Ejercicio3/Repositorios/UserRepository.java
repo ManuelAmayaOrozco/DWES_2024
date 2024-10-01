@@ -42,6 +42,12 @@ public class UserRepository {
 
     }
 
+    public void addUser(String nombre, String pass) {
+
+        bddUsuarios.add(new User(nombre, pass));
+
+    }
+
 
     /**
      * Método para obtener un usuario de la base de datos
