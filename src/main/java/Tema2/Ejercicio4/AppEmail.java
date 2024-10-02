@@ -56,6 +56,22 @@ public class AppEmail {
                 }
                 case "3" -> {
 
+                    System.out.println("Inserte el email:");
+                    String email = sc.nextLine();
+                    RespuestaHTTP r = controller.deleteUserEmail(email);
+
+                    if (r.getCodigoRespuesta() == 200) {
+
+                        System.out.println(r.getUserEmail().toString());
+
+                    }
+                    else {
+
+                        System.out.println(r.getMensajeRespuesta());
+
+                    }
+                    break;
+
                 }
                 case "0" -> {
 
