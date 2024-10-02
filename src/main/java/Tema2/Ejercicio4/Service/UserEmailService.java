@@ -32,7 +32,7 @@ public class UserEmailService {
     public UserEmail insertUserEmail(String nombre, String email) {
 
         //Comprobamos que el nombre no empieza por símbolo
-        CharSequence simbolos = "!#$~%&/()='*+,-./:;<>=?@[]/^_`{}|€";
+        CharSequence simbolos = "!#$~%&/()='*+,-.:;<>=?¿¡@[]^_`{}|€";
 
         if (nombre.contains(simbolos)) {
 
@@ -52,6 +52,13 @@ public class UserEmailService {
 
         //Comprobamos que email no este vacio
         if (email == null || email.isEmpty()) {
+
+            return null;
+
+        }
+
+        //Comprobamos que terminan en @'dominio'.es o .com
+        if (!email.matches("^\\w+@\\w+\\.(com|es)$")) {
 
             return null;
 
