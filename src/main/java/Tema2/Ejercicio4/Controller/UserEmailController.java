@@ -2,7 +2,7 @@ package Tema2.Ejercicio4.Controller;
 
 import Tema2.Ejercicio4.Model.RespuestaHTTP;
 import Tema2.Ejercicio4.Service.UserEmailService;
-import com.es.tema1.ejerEmail.model.UserEmail;
+import Tema2.Ejercicio4.Model.UserEmail;
 
 
 public class UserEmailController {
@@ -12,6 +12,30 @@ public class UserEmailController {
     public UserEmailController() {
 
         this.service = new UserEmailService();
+
+    }
+
+    public RespuestaHTTP login(String email, String password) {
+
+        try {
+
+            if (email == null || email.isEmpty())
+                return new RespuestaHTTP(400, "Bad Request");
+            if (password == null || password.isEmpty())
+                return new RespuestaHTTP(400, "Bad Request");
+
+            boolean respuestaService = service.login(email, password);
+
+            return respuestaService ?
+                    new RespuestaHTTP(200, "OK") :
+                    new RespuestaHTTP(401, "No autorizado") ;
+
+
+        } catch(Exception e) {
+
+            return new RespuestaHTTP(500, "Fatal Internal Error");
+
+        }
 
     }
 
@@ -33,11 +57,11 @@ public class UserEmailController {
 
     }
 
-    public RespuestaHTTP insertUserEmail(String nombre, String email) {
+    public RespuestaHTTP insertUserEmail(String nombre, String email, String password) {
 
         try {
 
-            UserEmail u = service.insertUserEmail(nombre, email);
+            UserEmail u = service.insertUserEmail(nombre, email, password);
 
             return u != null ?
                     new RespuestaHTTP(200, "Todo OK (Usuario insertado)") :

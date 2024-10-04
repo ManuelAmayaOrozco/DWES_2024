@@ -1,8 +1,7 @@
 package Tema2.Ejercicio4.Repository;
 
-import com.es.tema1.ejerEmail.model.UserEmail;
-
 import java.util.ArrayList;
+import Tema2.Ejercicio4.Model.UserEmail;
 
 public class UserEmailRepository implements UserEmailRepositoryAPI {
 

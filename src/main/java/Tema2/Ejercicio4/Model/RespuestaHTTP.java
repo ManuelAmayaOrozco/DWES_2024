@@ -1,6 +1,7 @@
 package Tema2.Ejercicio4.Model;
 
-import com.es.tema1.ejerEmail.model.UserEmail;
+import Tema2.Ejercicio4.Model.UserEmail;
+
 
 public class RespuestaHTTP {
 

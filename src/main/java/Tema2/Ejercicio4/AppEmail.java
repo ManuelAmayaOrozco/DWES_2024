@@ -10,87 +10,100 @@ public class AppEmail {
 
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
-
         UserEmailController controller = new UserEmailController();
 
-        System.out.println("Bienvenido a la app más molona del mundo");
-
+        System.out.println("Bienvenid@ a la app más molona del mundo");
         String opcion = "";
-
-
+        Scanner scan = new Scanner(System.in);
         while (!opcion.equals("0")) {
+
 
             System.out.println("""
                     Elija opción:
-                    \t1. Insertar usuario
+                    \t1. Insertar Usuario
                     \t2. Obtener usuario
                     \t3. Eliminar usuario
-                    \to. Salir
+                    \t4. Login
+                    \t0. Salir
                     """);
-            opcion = sc.nextLine();
 
-            switch(opcion) {
+            opcion = scan.nextLine();
 
-                case "1" -> {
+            switch (opcion) {
+                case "1":
+                    System.out.println("Insertar usuario");
+                    System.out.println("Inserte el nuevo nombre: ");
+                    String newNombre = scan.nextLine();
+                    System.out.println("Inserte el nuevo email: ");
+                    String newEmail = scan.nextLine();
+                    System.out.println("Inserte la nueva contraseña: ");
+                    String newPassword = scan.nextLine();
 
-                }
-                case "2" -> {
+                    RespuestaHTTP rInsert = controller.insertUserEmail(newNombre, newEmail, newPassword);
 
-                    System.out.println("Inserte el email:");
-                    String email = sc.nextLine();
-                    RespuestaHTTP r = controller.getUserEmail(email);
-
-                    if (r.getCodigoRespuesta() == 200) {
-
-                        System.out.println(r.getUserEmail().toString());
-
+                    if (rInsert.getCodigoRespuesta() == 200) {
+                        System.out.println(rInsert.getUserEmail());
+                    } else {
+                        System.out.println(rInsert.getMensajeRespuesta());
                     }
-                    else {
 
-                        System.out.println(r.getMensajeRespuesta());
 
+                    break;
+                case "2":
+                    System.out.println("Inserte el email: ");
+
+                    String email = scan.nextLine();
+                    RespuestaHTTP rGet = controller.getUserEmail(email);
+
+                    if (rGet.getCodigoRespuesta() == 200) {
+                        System.out.println(rGet.getUserEmail());
+                    } else {
+                        System.out.println(rGet.getMensajeRespuesta());
                     }
                     break;
 
-                }
-                case "3" -> {
+                case "3":
 
-                    System.out.println("Inserte el email:");
-                    String email = sc.nextLine();
-                    RespuestaHTTP r = controller.deleteUserEmail(email);
+                    System.out.println("Eliminar usuario");
+                    System.out.println("Inserte el email a eliminar: ");
+                    String bajaEmail = scan.nextLine();
 
-                    if (r.getCodigoRespuesta() == 200) {
+                    RespuestaHTTP rEliminar = controller.deleteUserEmail(bajaEmail);
 
-                        System.out.println(r.getUserEmail().toString());
-
+                    if (rEliminar.getCodigoRespuesta() == 200) {
+                        System.out.println(rEliminar.getUserEmail());
+                    } else {
+                        System.out.println(rEliminar.getMensajeRespuesta());
                     }
-                    else {
 
-                        System.out.println(r.getMensajeRespuesta());
-
-                    }
                     break;
 
-                }
-                case "0" -> {
+                case "4":
+                    System.out.println("LOGIN");
+                    System.out.println("Inserte el email: ");
+                    String loginEmail = scan.nextLine();
+                    System.out.println("Inserte la contraseña: ");
+                    String loginPassword = scan.nextLine();
 
+                    RespuestaHTTP rLogin = controller.login(loginEmail, loginPassword);
+
+                    if (rLogin.getCodigoRespuesta() == 200) {
+                        System.out.println(rLogin.getMensajeRespuesta());
+                    } else {
+                        System.out.println(rLogin.getMensajeRespuesta());
+                    }
+
+
+                    break;
+
+                case "0":
                     System.out.println("Adios");
-
-                }
-                default -> {
-
-                    System.out.println("Error! Elija entre 0 y 3");
-
-                }
-
-
+                    break;
+                default:
+                    System.out.println("Error! Elija opción entre 0 y 3");
+                    break;
             }
-
         }
-
-        controller.insertUserEmail("Manuel", "dede@dekjd.com");
-
 
     }
 
