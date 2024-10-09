@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+
+    <persistence-unit name="pruebaMySQL">
+
+        <class>Tema2.EjemploHibernateClase.Pelicula</class>
+        <class>Tema2.EjemploHibernateClase.Autor</class>
+        <class>Tema2.EjemploHibernateClase.Cine</class>
+
+        <properties>
+            <!--Que BDD Usar-->
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            <!--Donde esta la base de datos-->
+            <property name="jakarta.persistence.jdbc.url"    value="jdbc:mysql://localhost:3306/pruebabd" />
+            <!--Credenciales-->
+            <property name="jakarta.persistence.jdbc.user"   value="root" />
+            <property name="jakarta.persistence.jdbc.password" value="" />
+            <!--Que lenguaje de BDD se usa-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <!--¿Que pasa cuando inicio la aplicacion-->
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+        </properties>
+    </persistence-unit>
+</persistence>
