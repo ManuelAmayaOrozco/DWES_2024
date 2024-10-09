@@ -26,7 +26,7 @@ public class UserAdController {
             boolean respuestaService = service.login(email, password);
 
             return respuestaService ?
-                    new RespuestaHTTP(200, "OK") :
+                    new RespuestaHTTP(200, "Login autorizado, bienvenido.") :
                     new RespuestaHTTP(401, "No autorizado") ;
 
 
@@ -45,7 +45,7 @@ public class UserAdController {
             UserAd u = service.getUserAdEmail(email);
 
             return u != null ?
-                    new RespuestaHTTP(200, "Todo OK (Usuario obtenido)") :
+                    new RespuestaHTTP(200, "Todo OK (Usuario obtenido)", u) :
                     new RespuestaHTTP(400, "Bad Request") ;
 
         } catch (Exception e) {
@@ -56,11 +56,11 @@ public class UserAdController {
 
     }
 
-    public RespuestaHTTP insertUserEmail(String id, String email, String password, boolean admin) {
+    public RespuestaHTTP insertUserAdEmail(String id, String email, String password, boolean admin) {
 
         try {
 
-            UserAd u = service.insertUserEmail(id, email, password, admin);
+            UserAd u = service.insertUserAdEmail(id, email, password, admin);
 
             return u != null ?
                     new RespuestaHTTP(200, "Todo OK (Usuario insertado)") :
@@ -74,11 +74,29 @@ public class UserAdController {
 
     }
 
-    public RespuestaHTTP deleteUserEmail(String email) {
+    public RespuestaHTTP updateUserAdEmail(UserAd u, String id, String email, String password, boolean admin) {
 
         try {
 
-            boolean u = service.deleteUserEmail(email);
+            UserAd uAct = service.updateUserAdEmail(u, id, email, password, admin);
+
+            return uAct != null ?
+                    new RespuestaHTTP(200, "Todo OK (Usuario modificado)") :
+                    new RespuestaHTTP(400, "Bad Request") ;
+
+        } catch (Exception e) {
+
+            return new RespuestaHTTP(500, "Fatal Internal Error");
+
+        }
+
+    }
+
+    public RespuestaHTTP deleteUserAdEmail(String email) {
+
+        try {
+
+            boolean u = service.deleteUserAdEmail(email);
 
             return u ?
                     new RespuestaHTTP(200, "Todo OK (Usuario eliminado)") :

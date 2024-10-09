@@ -1,7 +1,5 @@
 package Tema2.ejerIsAdminManuelAmayaOrozco.Model;
 
-import Tema2.Ejercicio4.Model.UserEmail;
-
 public class RespuestaHTTP {
     private int codigoRespuesta;
     private String mensajeRespuesta;
@@ -38,11 +36,11 @@ public class RespuestaHTTP {
         this.codigoRespuesta = codigoRespuesta;
     }
 
-    public UserAd getUserEmail() {
+    public UserAd getUserAd() {
         return userAd;
     }
 
-    public void setUserEmail(UserAd userAd) {
+    public void setUserAd(UserAd userAd) {
         this.userAd = userAd;
     }
 }

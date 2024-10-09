@@ -27,7 +27,7 @@ public class UserAdService implements UserAdServiceAPI{
 
         }
 
-        //2º Llamar a getUserEmail de repository
+        //2º Llamar a getUserAdEmail de repository
         UserAd u = repository.getUserAdEmail(email);
 
         //3º Comprobar que el email existe
@@ -51,13 +51,13 @@ public class UserAdService implements UserAdServiceAPI{
 
         }
 
-        //Obtenemos y devolvemos el UserEmail
+        //Obtenemos y devolvemos el UserAd
         return repository.getUserAdEmail(email);
 
     }
 
     @Override
-    public UserAd insertUserEmail(String id, String email, String password, boolean admin) {
+    public UserAd insertUserAdEmail(String id, String email, String password, boolean admin) {
 
         //Comprobamos que correo y contraseña tienen la longitud adecuada
         int maxLen = 15;
@@ -92,13 +92,54 @@ public class UserAdService implements UserAdServiceAPI{
         //Encriptamos la contraseña
         String passHashed = EncryptUtil.encryptPassword(password);
 
-        //Obtenemos y devolvemos el UserEmail
+        //Obtenemos y devolvemos el UserAd
         return repository.insertUserAdEmail(new UserAd(id, email, passHashed, admin));
 
     }
 
     @Override
-    public boolean deleteUserEmail(String email) {
+    public UserAd updateUserAdEmail(UserAd u, String id, String email, String password, boolean admin) {
+
+        //Comprobamos que correo y contraseña tienen la longitud adecuada
+        int maxLen = 15;
+
+        if (password.length() > maxLen || email.length() > maxLen) {
+
+            return null;
+
+        }
+
+        //Comprobamos que email no este vacio
+        if (email == null || email.isEmpty()) {
+
+            return null;
+
+        }
+
+        //Comprobamos que no hay duplicados
+        if (getUserAdEmail(email) != null) {
+
+            return null;
+
+        }
+
+        //Comprobamos que terminan en @'dominio'.es o .com
+        if (!email.matches("^\\w+@\\w+\\.(com|es)$")) {
+
+            return null;
+
+        }
+
+        //Encriptamos la contraseña
+        String passHashed = EncryptUtil.encryptPassword(password);
+
+        //Obtenemos y devolvemos el UserAd
+        return repository.updateUserAdEmail(u, new UserAd(id, email, passHashed, admin));
+
+    }
+
+    @Override
+    public boolean deleteUserAdEmail(String email) {
 
         //Comprobamos que email no este vacio
         if (email == null || email.isEmpty()) {
@@ -107,7 +148,7 @@ public class UserAdService implements UserAdServiceAPI{
 
         }
 
-        //Obtenemos y devolvemos el UserEmail
+        //Obtenemos y devolvemos el UserAd
         repository.deleteUserAdEmail(email);
 
         return true;

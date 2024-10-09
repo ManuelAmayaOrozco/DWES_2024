@@ -9,19 +9,19 @@ public class UserAd {
     private String password;
     private boolean admin;
 
-    public UserAd(String nombre, String email) {
-        this.id = nombre;
+    public UserAd(String id, String email) {
+        this.id = id;
         this.email = email;
     }
 
-    public UserAd(String nombre, String email, String password) {
-        this.id = nombre;
+    public UserAd(String id, String email, String password) {
+        this.id = id;
         this.email = email;
         this.password = password;
     }
 
-    public UserAd(String nombre, String email, String password, boolean admin) {
-        this.id = nombre;
+    public UserAd(String id, String email, String password, boolean admin) {
+        this.id = id;
         this.email = email;
         this.password = password;
         this.admin = admin;

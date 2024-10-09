@@ -8,6 +8,8 @@ public interface UserAdRepositoryAPI {
 
     UserAd insertUserAdEmail(UserAd u);
 
+    UserAd updateUserAdEmail(UserAd u, UserAd uAct);
+
     boolean deleteUserAdEmail(String email);
 
 }

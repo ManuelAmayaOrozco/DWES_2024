@@ -8,8 +8,10 @@ public interface UserAdServiceAPI {
 
     public UserAd getUserAdEmail(String email);
 
-    public UserAd insertUserEmail(String id, String email, String password, boolean admin);
+    public UserAd insertUserAdEmail(String id, String email, String password, boolean admin);
 
-    public boolean deleteUserEmail(String email);
+    public UserAd updateUserAdEmail(UserAd u, String id, String email, String password, boolean admin);
+
+    public boolean deleteUserAdEmail(String email);
 
 }
