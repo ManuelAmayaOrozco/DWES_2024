@@ -27,6 +27,29 @@ public class UserAdService implements UserAdServiceAPI{
 
         }
 
+        //Comprobamos que correo y contraseña tienen la longitud adecuada
+        int maxLen = 20;
+
+        if (password.length() > maxLen || email.length() > maxLen) {
+
+            return false;
+
+        }
+
+        //Comprobamos que email no este vacio
+        if (email == null || email.isEmpty()) {
+
+            return false;
+
+        }
+
+        //Comprobamos que contraseña no este vacia
+        if (password == null || password.isEmpty()) {
+
+            return false;
+
+        }
+
         //2º Llamar a getUserAdEmail de repository
         UserAd u = repository.getUserAdEmail(email);
 
@@ -60,7 +83,7 @@ public class UserAdService implements UserAdServiceAPI{
     public UserAd insertUserAdEmail(String id, String email, String password, boolean admin) {
 
         //Comprobamos que correo y contraseña tienen la longitud adecuada
-        int maxLen = 15;
+        int maxLen = 20;
 
         if (password.length() > maxLen || email.length() > maxLen) {
 
@@ -70,6 +93,20 @@ public class UserAdService implements UserAdServiceAPI{
 
         //Comprobamos que email no este vacio
         if (email == null || email.isEmpty()) {
+
+            return null;
+
+        }
+
+        //Comprobamos que contraseña no este vacio
+        if (password == null || password.isEmpty()) {
+
+            return null;
+
+        }
+
+        //Comprobamos que id no este vacia
+        if (id == null || id.isEmpty()) {
 
             return null;
 
@@ -101,7 +138,7 @@ public class UserAdService implements UserAdServiceAPI{
     public UserAd updateUserAdEmail(UserAd u, String id, String email, String password, boolean admin) {
 
         //Comprobamos que correo y contraseña tienen la longitud adecuada
-        int maxLen = 15;
+        int maxLen = 20;
 
         if (password.length() > maxLen || email.length() > maxLen) {
 
@@ -111,6 +148,20 @@ public class UserAdService implements UserAdServiceAPI{
 
         //Comprobamos que email no este vacio
         if (email == null || email.isEmpty()) {
+
+            return null;
+
+        }
+
+        //Comprobamos que contraseña no este vacia
+        if (password == null || password.isEmpty()) {
+
+            return null;
+
+        }
+
+        //Comprobamos que id no este vacio
+        if (id == null || id.isEmpty()) {
 
             return null;
 
