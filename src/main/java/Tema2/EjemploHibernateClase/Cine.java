@@ -2,6 +2,8 @@ package Tema2.EjemploHibernateClase;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "cine")
 public class Cine {
@@ -16,8 +18,9 @@ public class Cine {
     @Column (name = "capacidad", nullable = false)
     private int capacidad;
 
-    @Column (name = "direccion", nullable = false)
-    private String direccion;
+    @OneToOne (cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_direccion")
+    private Direccion direccion;
 
     public Cine() {
 
@@ -25,8 +28,7 @@ public class Cine {
 
     }
 
-    public Cine(Long id, String nombre, int capacidad, String direccion) {
-        this.id = id;
+    public Cine(String nombre, int capacidad, Direccion direccion) {
         this.nombre = nombre;
         this.capacidad = capacidad;
         this.direccion = direccion;
@@ -56,11 +58,11 @@ public class Cine {
         this.capacidad = capacidad;
     }
 
-    public String getDireccion() {
+    public Direccion getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
+    public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
     }
 }
