@@ -16,8 +16,10 @@ public class AppMain {
 
         //2º Se realizan las operaciones que queramos
         //Vamos a hacer un insert
+        Director direc = new Director("778899JOE", "Paco Jones", 70, 300.00, null);
         Direccion dir = new Direccion("Calle Senda Perdida", 8, "11010", null);
-        Cine cine = new Cine("Yelmo Cines Bahía Sur", 500, dir);
+        Cine cine = new Cine("Yelmo Cines Bahía Sur", 500, dir, direc);
+        em.persist(direc);
         em.persist(dir);
         em.persist(cine);
 
@@ -32,7 +34,9 @@ public class AppMain {
         Cine cineBusqueda = em.find(Cine.class, 1);
 
         System.out.println(cineBusqueda.getNombre());
-        System.out.println(cineBusqueda.getDireccion().getCalle());
+        //System.out.println(cineBusqueda.getDireccion().getCalle());
+
+        System.out.println(cineBusqueda.getDireccion().getCine().getNombre());
 
 
     }

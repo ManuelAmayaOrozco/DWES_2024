@@ -10,6 +10,7 @@
         <class>Tema2.EjemploHibernateClase.Autor</class>
         <class>Tema2.EjemploHibernateClase.Cine</class>
         <class>Tema2.EjemploHibernateClase.Direccion</class>
+        <class>Tema2.EjemploHibernateClase.Director</class>
 
         <properties>
             <!--Que BDD Usar-->

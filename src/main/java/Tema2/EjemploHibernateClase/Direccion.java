@@ -19,7 +19,7 @@ public class Direccion {
     @Column(name = "codigo_postal", nullable = false, length = 50)
     private String cp;
 
-    @OneToOne (mappedBy = "direccion", fetch = FetchType.LAZY)
+    @OneToOne (mappedBy = "direccion", fetch = FetchType.EAGER)
     private Cine cine;
 
     public Direccion() {
