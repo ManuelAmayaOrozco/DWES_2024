@@ -8,7 +8,7 @@ public class AppMain {
 
     public static void main(String[] args) {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pruebaMySQL");
+        /*EntityManagerFactory emf = Persistence.createEntityManagerFactory("pruebaMySQL");
         EntityManager em = emf.createEntityManager();
 
         //1º Empezar una transacción
@@ -36,8 +36,10 @@ public class AppMain {
         System.out.println(cineBusqueda.getNombre());
         //System.out.println(cineBusqueda.getDireccion().getCalle());
 
-        System.out.println(cineBusqueda.getDireccion().getCine().getNombre());
+        System.out.println(cineBusqueda.getDireccion().getCine().getNombre());*/
 
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("InstitutoMySQL");
+        EntityManager em = emf.createEntityManager();
 
     }
 }

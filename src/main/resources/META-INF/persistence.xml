@@ -27,4 +27,28 @@
             <property name="hibernate.hbm2ddl.auto" value="create-drop" />
         </properties>
     </persistence-unit>
+
+    <persistence-unit name="InstitutoMySQL">
+
+        <class>Tema2.EjemploHibernateClase.Instituto</class>
+        <class>Tema2.EjemploHibernateClase.Inspector</class>
+        <class>Tema2.EjemploHibernateClase.DirectorI</class>
+        <class>Tema2.EjemploHibernateClase.Departamento</class>
+        <class>Tema2.EjemploHibernateClase.Proveedor</class>
+
+        <properties>
+            <!--Que BDD Usar-->
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            <!--Donde esta la base de datos-->
+            <property name="jakarta.persistence.jdbc.url"    value="jdbc:mysql://localhost:3306/institutobd" />
+            <!--Credenciales-->
+            <property name="jakarta.persistence.jdbc.user"   value="root" />
+            <property name="jakarta.persistence.jdbc.password" value="" />
+            <!--Que lenguaje de BDD se usa-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <!--¿Que pasa cuando inicio la aplicacion-->
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+        </properties>
+    </persistence-unit>
 </persistence>
