@@ -51,4 +51,28 @@
             <property name="hibernate.hbm2ddl.auto" value="create-drop" />
         </properties>
     </persistence-unit>
+
+    <persistence-unit name="ComprasMySQL">
+
+        <class>Tema2.ejerComprasHibernate.Cliente</class>
+        <class>Tema2.ejerComprasHibernate.Compra</class>
+        <class>Tema2.ejerComprasHibernate.DetalleCompra</class>
+        <class>Tema2.ejerComprasHibernate.Articulo</class>
+        <class>Tema2.ejerComprasHibernate.Proveedor</class>
+
+        <properties>
+            <!--Que BDD Usar-->
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            <!--Donde esta la base de datos-->
+            <property name="jakarta.persistence.jdbc.url"    value="jdbc:mysql://localhost:3306/comprasbd" />
+            <!--Credenciales-->
+            <property name="jakarta.persistence.jdbc.user"   value="root" />
+            <property name="jakarta.persistence.jdbc.password" value="" />
+            <!--Que lenguaje de BDD se usa-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+            <property name="hibernate.show_sql" value="true" />
+            <!--¿Que pasa cuando inicio la aplicacion-->
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+        </properties>
+    </persistence-unit>
 </persistence>
